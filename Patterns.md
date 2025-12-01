@@ -95,7 +95,7 @@ The high-level controller only relies on the abstractions of the FileSelector, S
 ----
 
 
-### Composite - Structural - 
+### Composite - Structural - Compose objects into tree structures and work with the structures as though they are individual objects
 ----
 
 
@@ -103,7 +103,7 @@ The high-level controller only relies on the abstractions of the FileSelector, S
 ----
 
 
-### Filter - Structural - 
+### Filter - Structural - Perform composable transformations and computations on streams (Just think about how filtering actually works)
 ----
 
 
