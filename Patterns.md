@@ -150,3 +150,9 @@ The high-level controller only relies on the abstractions of the FileSelector, S
 ### Null Object - Behavioral - Encapsulate the absence of an object (that is optionally null) by providing an alternative that offers suitable default do-nothing behavior
 ----
 
+### Balking - Behavioral - Disregard the call to an object's method if the object is not in the correct state
+----
+
+### Producer/Consumer - Concurrency - Coordinates asynchronous production and consumption of information
+----
+
