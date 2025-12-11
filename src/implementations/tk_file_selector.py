@@ -1,6 +1,6 @@
 from tkinter import filedialog
 from typing import Optional
-from controller_interface import FileSelector
+from controller_interface.controller_interface import FileSelector
 
 
 class TkFileSelector(FileSelector):
