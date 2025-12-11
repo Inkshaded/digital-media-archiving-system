@@ -18,6 +18,21 @@ class ArchiveUI:
             )
         self.title_label.pack(pady=10)
 
+        # -- Role Switcher --
+        role_frame = tk.Frame(root)
+        role_frame.pack(pady=5)
+
+        tk.Label(role_frame, text="Current Role:").grid(row=0, column=0, padx=5)
+
+        self.role_label = tk.Label(role_frame, text="", font=("Arial", 12, "bold"))
+        self.role_label.grid(row=0, column=1, padx=5)
+
+        tk.Button(role_frame, text="Switch to Reader",
+                  command=self.app_logic.switch_to_reader).grid(row=1, column=0, pady=5)
+
+        tk.Button(role_frame, text="Switch to Archivist",
+                  command=self.app_logic.switch_to_archivist).grid(row=1, column=1, pady=5)
+
         # -- Upload Button --
         self.upload_button = tk.Button(
             root, 
@@ -65,6 +80,19 @@ class ArchiveUI:
         """Replace the list contents with a single selected file path."""
         self.file_listbox.delete(0, tk.END)
         self.file_listbox.insert(tk.END, file_path)
+
+    def update_role_display(self):
+        """Update the label + button availability based on role state."""
+        role_name = type(self.app_logic.role).__name__.replace("State", "")
+        self.role_label.config(text=role_name)
+
+        # Enable or disable upload button based on state permission
+        can_upload = self.app_logic.role.can_upload()
+
+        if can_upload:
+            self.upload_button.config(state="normal")
+        else:
+            self.upload_button.config(state="disabled")
 
     def show_log_window(self, rows, entries: int):
         """Render a read-only window showing the last N archive records."""

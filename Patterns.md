@@ -136,7 +136,7 @@ Markers were added that can be applied to various types of media files that can 
 
 ### State - Behavioral - Lets an object alter its behavior when internal state changes, making it appear as though it changes classes 
 ----
-
+The UserState class manages the ArchivistState and ReaderState to manage a user's ability to modify the content of the archive
 
 ### Decorator - Structural - Attach new behaviors to objects by placing them in wrapper objects that contain the behaviors
 ----
