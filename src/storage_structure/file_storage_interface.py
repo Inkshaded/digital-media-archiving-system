@@ -1,6 +1,6 @@
 
 
-class StorageInterface:
+class FileStorageInterface:
     """Interface for saving a file to a destination.
     
     Methods:

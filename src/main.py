@@ -1,13 +1,14 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog
 from ui.ui_start import ArchiveUI
-from storage_structure.storage_interface import StorageInterface
-from controller_interface import FileSelector, RecordStore
+from storage_structure.file_storage_interface import FileStorageInterface
+from storage_structure.record_storage_interface import RecordStorageInterface
+from controller_interface import FileSelector
 
 # TODO: Seperate ArchiveApp controller from main.py
 class ArchiveApp:
     """ Controller to connect GUI to file operations """
-    def __init__(self, root: tk.Tk, selector: FileSelector, storage: StorageInterface, records: RecordStore):
+    def __init__(self, root: tk.Tk, selector: FileSelector, storage: FileStorageInterface, records: RecordStorageInterface):
         self.root = root
         self.selector = selector
         self.storage = storage

@@ -1,6 +1,6 @@
 import os
 import shutil
-from storage_structure.storage_interface import StorageInterface
+from storage_structure.file_storage_interface import StorageInterface
 
 
 class LocalStorage(StorageInterface):
