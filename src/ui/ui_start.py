@@ -43,6 +43,23 @@ class ArchiveUI:
         )
         self.file_listbox.pack(pady=12, padx=10, fill="x")
 
+        # -- Search Box --
+        search_frame = tk.Frame(root)
+        search_frame.pack(pady=10)
+
+        tk.Label(search_frame, text="Search Files:").pack(side=tk.LEFT)
+        self.search_entry = tk.Entry(search_frame, width=40)
+        self.search_entry.pack(side=tk.LEFT, padx=5)
+        tk.Button(search_frame, text="Search", command=self._on_search).pack(side=tk.LEFT)
+
+        # -- Search Results Listbox --
+        self.search_results = tk.Listbox(root, width=100, height=20)
+        self.search_results.pack(pady=10)
+
+        # Selected file display
+        self.file_label = tk.Label(root, text="", font=("Arial", 10, "italic"))
+        self.file_label.pack(pady=5)
+
     # --- Helpers for controller ---
     def update_selected_file(self, file_path: str):
         """Replace the list contents with a single selected file path."""
@@ -84,3 +101,16 @@ class ArchiveUI:
                 text.insert("end", line + "\n")
 
         text.configure(state="disabled")
+    
+    def _on_search(self):
+        query = self.search_entry.get()
+        self.app_logic.search_files(query)
+
+    def display_search_results(self, results):
+        """Display matching file paths."""
+        self.search_results.delete(0, tk.END)
+        if not results:
+            self.search_results.insert(tk.END, "No matching files found.")
+            return
+        for path in results:
+            self.search_results.insert(tk.END, path)

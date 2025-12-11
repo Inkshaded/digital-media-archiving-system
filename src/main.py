@@ -2,6 +2,7 @@ import tkinter as tk
 from app import ArchiveApp
 from implementations.tk_file_selector import TkFileSelector
 from implementations.local_storage import LocalStorage
+from implementations.local_search import LocalSearch
 from implementations.csv_record_store import CsvRecordStore
 
 def main():
@@ -9,6 +10,7 @@ def main():
     root = tk.Tk()
     ArchiveApp(root, selector=TkFileSelector(), 
                storage=LocalStorage(),
+               search=LocalSearch(),
                records=CsvRecordStore(log_path="archive/records.csv"),)
     root.mainloop()
 
