@@ -3,9 +3,9 @@ import os
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict
-from controller_interface import RecordStore
+from storage_structure.record_storage_interface import RecordStorageInterface
 
-class CsvRecordStore(RecordStore):
+class CsvRecordStore(RecordStorageInterface):
     """
     Appends archive records to a CSV file and can read the last N entries.
     Columns: timestamp_iso, src_path, dest_path, size_bytes

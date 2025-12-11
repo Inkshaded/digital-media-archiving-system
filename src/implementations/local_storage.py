@@ -1,9 +1,9 @@
 import os
 import shutil
-from storage_structure.file_storage_interface import StorageInterface
+from storage_structure.file_storage_interface import FileStorageInterface
 
 
-class LocalStorage(StorageInterface):
+class LocalStorage(FileStorageInterface):
     """Saves files locally in the archive/ directory."""
     def save(self, src_path: str, dest_root: str = "archive") -> str:
         if not os.path.isfile(src_path):
