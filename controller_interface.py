@@ -8,14 +8,6 @@ class FileSelector(Protocol):
     """
     def select_file(self) -> Optional[str]: ...
 
-class Storage(Protocol):
-    """Interface for saving a file to a destination.
-    
-    Methods:
-        save: Copies a file from src_path to the archive directory
-    """
-    def save(self, src_path: str, dest_root: str = "archive") -> str: ...
-
 class RecordStore(Protocol):
     """Interface for recording archive operations.
     
