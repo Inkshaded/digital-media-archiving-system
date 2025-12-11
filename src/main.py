@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog
 from ui.ui_start import ArchiveUI
-from storage.storage_interface import StorageInterface
+from storage_structure.storage_interface import StorageInterface
 from controller_interface import FileSelector, RecordStore
 
 # TODO: Seperate ArchiveApp controller from main.py
