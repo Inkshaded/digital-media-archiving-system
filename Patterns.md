@@ -66,6 +66,7 @@ The high-level controller only relies on the abstractions of the FileSelector, S
 
 ### Marker - Creational - An iterface with no behavior that is primarily used to specify a type (for metadata purposes)
 ----
+Markers were added that can be applied to various types of media files that can be stored in the archive. In future, these markers can be used to assist with searching through particular filetypes in the archive using a search function that can analyze that data.
 
 
 ### Proxy - Structural - Provides a substitute or placeholder for another object and assists in controlling access to the original object
