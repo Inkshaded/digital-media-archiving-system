@@ -6,16 +6,31 @@ Below, all functional program files will be summarised simply to demonstrate adh
 Program Files
 
 implementations/ # holds concrete behaviors
-    csv_record_store : Implementation of RecordStorage that creates/appends to
-    a 'records' file to keep track of when and what has been archived
-    local_storage.py : Implementation of Storage that archives files locally
+    csv_record_store : Implementation of RecordStorageInterface that creates/appends to a 'records' file to keep track of when and what has been archived
+    local_storage.py : Implementation of FileStorageInterface that archives files locally
     tkinter_file_selector.py : Implementation of FileSelector that opens a
     tkinter dialog box to select a file
 
 ui/
     ui_start.py : Handles Tkinter UI layout and updates
 
-controller_interface.py : defines abstractions for FileSelector and Storage
+storage_structure/
+    file_storage_interface.py : defines abstraction for FileStorageInterface
+    record_storage_interface.py : defines abstraction for RecordStorageInterface
+
+    audio/
+        audio_storage_interface.py : 
+    documents/
+        documents_storage_interface.py :
+    misc/
+        misc_storage_interface.py :
+    video/
+        video_storage_interface.py :
+    web/
+        web_storage_interface.py :
+
+
+controller_interface.py : defines abstractions for FileSelector
 
 main.py : Acts as controller, in charge of interactions between UI and logic
 ```
@@ -23,7 +38,6 @@ main.py : Acts as controller, in charge of interactions between UI and logic
 Storage, RecordStore, and FileSelector can all be extended, as they are utilized by the controller in main.py through their abstract interfaces, as defined in controller_interface.py. Additionally, this means that if an additional implementation were added to, say, store files in the cloud, the local_storage.py implementation could remain unchanged.
 
 ### Liskov Substitution Principle
-Any implementation of Storage, FileSelector, or RecordStore can be implemented through the controller_interface.py definitions
 
 ### Interface Segregation Principle
 The interfaces in the program are kept tiny and seperate from one another, minimizing dependencies.
@@ -32,8 +46,8 @@ Existing dependencies:
 ```
 ArchiveApp (controller)
 |-- depends on -> FileSelector.select_file()
-|-- depends on -> Storage.save() 
-|-- depends on -> RecordStore.append(), RecordStore.read_tail
+|-- depends on -> FileStorageInterface.save() 
+|-- depends on -> RecordStorageInterface.append(), RecordStorageInterface.read_tail
 ```
 Implementations of interfaces:
 
