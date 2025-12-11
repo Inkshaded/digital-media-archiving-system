@@ -7,32 +7,37 @@ Program Files
 
 implementations/ # holds concrete behaviors
     csv_record_store : Implementation of RecordStorageInterface that creates/appends to a 'records' file to keep track of when and what has been archived
+    local_search : Implementation of SearchInterface that searches for files with queried filenames in a specified directory when given a query
     local_storage.py : Implementation of FileStorageInterface that archives files locally
-    tkinter_file_selector.py : Implementation of FileSelector that opens a
-    tkinter dialog box to select a file
+    tkinter_file_selector.py : Implementation of FileSelector that opens a tkinter dialog box to select a file
 
 ui/
     ui_start.py : Handles Tkinter UI layout and updates
+
+search/
+    search_interface.py : defines abstraction for SearchInterface
 
 storage_structure/
     file_storage_interface.py : defines abstraction for FileStorageInterface
     record_storage_interface.py : defines abstraction for RecordStorageInterface
 
     audio/
-        audio_storage_interface.py : 
+        audio_storage_interface.py : defines abstraction for AudioStorageInterface
     documents/
-        documents_storage_interface.py :
+        documents_storage_interface.py : defines abstraction for DocumentsStorageInterface
     misc/
-        misc_storage_interface.py :
+        misc_storage_interface.py : defines abstraction for MiscStorageInterface
     video/
-        video_storage_interface.py :
+        video_storage_interface.py : defines abstraction for VideoStorageInterface
     web/
-        web_storage_interface.py :
+        web_storage_interface.py : defines abstraction for WebStorageInterface
 
+controller_interface/
+    controller_interface.py : defines abstraction for FileSelector
+    user_state.py : defines UserState interface and UserState concrete states (ReaderState and ArchivistState)
 
-controller_interface.py : defines abstractions for FileSelector
-
-main.py : Acts as controller, in charge of interactions between UI and logic
+app.py : Acts as controller, in charge of interactions between UI and logic
+main.py : Application root
 ```
 ### Open/Closed Principle
 Storage, RecordStore, and FileSelector can all be extended, as they are utilized by the controller in main.py through their abstract interfaces, as defined in controller_interface.py. Additionally, this means that if an additional implementation were added to, say, store files in the cloud, the local_storage.py implementation could remain unchanged.
@@ -102,7 +107,7 @@ Markers were added that can be applied to various types of media files that can 
 ----
 
 
-### Builder - Creational - Constructs coimplex objects step by step
+### Builder - Creational - Constructs complex objects step by step
 ----
 
 
@@ -136,7 +141,7 @@ Markers were added that can be applied to various types of media files that can 
 
 ### State - Behavioral - Lets an object alter its behavior when internal state changes, making it appear as though it changes classes 
 ----
-The UserState class manages the ArchivistState and ReaderState to manage a user's ability to modify the content of the archive
+The UserState abstract class manages the ArchivistState and ReaderState concrete states to determine a user's ability to modify the content of the archive
 
 ### Decorator - Structural - Attach new behaviors to objects by placing them in wrapper objects that contain the behaviors
 ----
