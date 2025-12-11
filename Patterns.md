@@ -133,11 +133,12 @@ Markers were added that can be applied to various types of media files that can 
 
 ### Flyweight - Structural - Fits more objects into memory by sharing common parts of objects between said objects, rather than storing individual instances in each
 ----
+N/A
 
 
 ### Strategy - Behavioral - Defines a family of algorithms in separate classes that are interchangable
 ----
-
+FileSelector, FileStorageInterface, RecordStorageInterface and SearchInterface are all abstractly defined so that different implementations can be applied at runtime, and are thus defining families of algorithms that are interchangable
 
 ### State - Behavioral - Lets an object alter its behavior when internal state changes, making it appear as though it changes classes 
 ----
