@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ### Step 3: Run the Application
 From the project root, run:
 ```bash
-python main.py
+python src/main.py
 ```
 
 ## Documentation Website
