@@ -33,14 +33,14 @@ storage_structure/
         web_storage_interface.py : defines abstraction for WebStorageInterface
 
 controller_interface/
-    controller_interface.py : defines abstraction for FileSelector
+    file_selector.py : defines abstraction for FileSelector
     user_state.py : defines UserState interface and UserState concrete states (ReaderState and ArchivistState)
 
 app.py : Acts as controller, in charge of interactions between UI and logic
 main.py : Application root
 ```
 ### Open/Closed Principle
-Storage, RecordStore, and FileSelector can all be extended, as they are utilized by the controller in app.py through their abstract interfaces. Additionally, this means that if an additional implementation were added to, say, store files in the cloud, the local_storage.py implementation could remain unchanged.
+FileStorageInterface, RecordStorageInterface, FileSelector, and SearchInterface can all be extended, as they are utilized by the controller in app.py through their abstract interfaces. This means that any concrete implementation that still adheres to the logic of any interface can be created to "extend" the functionality.
 
 ### Liskov Substitution Principle
 
@@ -51,6 +51,7 @@ Existing dependencies:
 ```
 ArchiveApp (controller)
 |-- depends on -> FileSelector.select_file()
+|-- depends on -> SearchInterface.search_files()
 |-- depends on -> FileStorageInterface.save() 
 |-- depends on -> RecordStorageInterface.append(), RecordStorageInterface.read_tail
 ```
@@ -63,13 +64,13 @@ Implementations of interfaces:
     CsvRecordStore -> implements -> RecordStore
 
 ### Dependency Inversion Principle
-The high-level controller only relies on the abstractions of the FileSelector, Storage, and RecordStore interfaces. The actual details of how the concrete implementations work only matter at the lower level and are therefore only accessed there. For example, LocalStorage implementation can be directly applied to the program through the Storage interface, but not vice versa.
+The high-level controller only relies on the abstractions of the FileStorageInterface, RecordStorageInterface, FileSelector, and SearchInterface interfaces. The actual details of how the concrete implementations work only matter at the lower level and are therefore only accessed there. For example, LocalStorage implementation can be directly applied to the program through the FileStorageInterface interface, but not vice versa.
 
 ## Design Patterns
 
 ### Singleton - Creational - Classes that are ensured to have only one instance
 ----
-
+No classes are currently ensured to only have one instance
 
 ### Immutable Classes - Creational - Classes whose variables cannot be changed after initialization
 ----
@@ -130,12 +131,11 @@ Currently not used in the archiving system, but will likely have a use in a  mor
 
 ### Adapter - Structural - Defines a class that allows interfaces that are incompatible to work together (like an interface for your interfaces)
 ----
-
+No Adapters are currently implemented
 
 ### Flyweight - Structural - Fits more objects into memory by sharing common parts of objects between said objects, rather than storing individual instances in each
 ----
-N/A
-
+Currently, there are no unchanging objects that can be shared for the sake of efficiency
 
 ### Strategy - Behavioral - Defines a family of algorithms in separate classes that are interchangable
 ----
@@ -155,7 +155,7 @@ The UserState abstract class manages the ArchivistState and ReaderState concrete
 
 ### Mediator - Behavioral - Reduces chaotic dependencies between objects (Handlers are an example of this)
 ----
-
+ArchiveApp connects the archive subsystems together and allows communication between them whilst preventing dependencies between them, making it the Mediator for pretty much all subsystems of the app
 
 ### Memento - Behavioral - Saves and restores state of object without revealing details of implementation
 ----
