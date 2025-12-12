@@ -5,7 +5,7 @@ from search.search_interface import SearchInterface
 from storage_structure.file_storage_interface import FileStorageInterface
 from storage_structure.record_storage_interface import RecordStorageInterface
 from controller_interface.user_state import UserState, ReaderState, ArchivistState
-from controller_interface.controller_interface import FileSelector
+from controller_interface.file_selector import FileSelector
 
 class ArchiveApp:
     """ Controller to connect GUI to file operations """
