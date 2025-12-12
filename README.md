@@ -24,4 +24,4 @@ python src/main.py
 ```
 
 ## Documentation Website
-https://inkshaded.github.io/digital-media-archiving-system/
+https://inkshaded.github.io/digital-media-archiving-system/ [OUTDATED]
