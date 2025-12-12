@@ -1,7 +1,7 @@
 # Design Patterns
 ## SOLID Design Principles
 ### Single Responsibility Principle
-Below, all functional program files will be summarised simply to demonstrate adherence to the Single Responsibility Principle
+Below, all functional program files in src will be summarised simply to demonstrate adherence to the Single Responsibility Principle
 ```
 Program Files
 
@@ -40,7 +40,7 @@ app.py : Acts as controller, in charge of interactions between UI and logic
 main.py : Application root
 ```
 ### Open/Closed Principle
-Storage, RecordStore, and FileSelector can all be extended, as they are utilized by the controller in main.py through their abstract interfaces, as defined in controller_interface.py. Additionally, this means that if an additional implementation were added to, say, store files in the cloud, the local_storage.py implementation could remain unchanged.
+Storage, RecordStore, and FileSelector can all be extended, as they are utilized by the controller in app.py through their abstract interfaces. Additionally, this means that if an additional implementation were added to, say, store files in the cloud, the local_storage.py implementation could remain unchanged.
 
 ### Liskov Substitution Principle
 
@@ -73,15 +73,15 @@ The high-level controller only relies on the abstractions of the FileSelector, S
 
 ### Immutable Classes - Creational - Classes whose variables cannot be changed after initialization
 ----
-
+No classes are currently set to be immutable
 
 ### Factory Method - Creational - Provides interfaces for creating objects in a superclass and allows subclasses to alter the types of objects created
 ----
-
+All objects are currently instantiated manually
 
 ### Abstract Factory - Creational - Allows production of families of related objects without specifying concrete classes
 ----
-
+All objects are currently instantiated manually
 
 ### Marker - Creational - An iterface with no behavior that is primarily used to specify a type (for metadata purposes)
 ----
@@ -89,11 +89,12 @@ Markers were added that can be applied to various types of media files that can 
 
 
 ### Proxy - Structural - Provides a substitute or placeholder for another object and assists in controlling access to the original object
-
+----
+No access-control or wrapper classes are currently used
 
 ### Prototype - Creational - Copies existing objects without making code dependent on those classes
 ----
-
+There isn't currently a need for clones of existing objects
 
 ### Object Pool - Creational - A cache of reusable, high-cost objects
 ----
@@ -109,11 +110,11 @@ Markers were added that can be applied to various types of media files that can 
 
 ### Builder - Creational - Constructs complex objects step by step
 ----
-
+No complex object construction is currently done by this program
 
 ### Bridge - Structural - Separates an abstraction from its implementation so that they can vary independently
 ----
-
+While the project does separate many an implementation from an abstraction, all currently separated implementation/abstraction pairs are used as Strategies
 
 ### Composite - Structural - Compose objects into tree structures and work with the structures as though they are individual objects
 ----
@@ -121,11 +122,11 @@ Markers were added that can be applied to various types of media files that can 
 
 ### Chain of Responsibility - Behavioral - Enables passing of requests along a chain of handlers, with handlers either handling the request or passing it to the next handler
 ----
-
+Current archive system does have handlers but not chains of handlers
 
 ### Filter - Structural - Perform composable transformations and computations on streams (Just think about how filtering actually works)
 ----
-
+Currently not used in the archiving system, but will likely have a use in a  more complex storage or search system wherein files can be organized automatically based on their filetype.
 
 ### Adapter - Structural - Defines a class that allows interfaces that are incompatible to work together (like an interface for your interfaces)
 ----
