@@ -98,7 +98,7 @@ There isn't currently a need for clones of existing objects
 
 ### Object Pool - Creational - A cache of reusable, high-cost objects
 ----
-
+No high-cost, reusable objects are currently required
 
 ### Iterator - Behavioral - Traverse elements of a collection without exposing the underlying representation
 ----
