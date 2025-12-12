@@ -103,11 +103,11 @@ No high-cost, reusable objects are currently required
 
 ### Iterator - Behavioral - Traverse elements of a collection without exposing the underlying representation
 ----
-
+No complex Iterators are currently being used. A simple 
 
 ### Facade - Structural - Provides a simplified interface to libraries, frameworks, or any other complex set of classes
 ----
-
+No Facade is currently being used
 
 ### Builder - Creational - Constructs complex objects step by step
 ----
@@ -119,7 +119,7 @@ While the project does separate many an implementation from an abstraction, all 
 
 ### Composite - Structural - Compose objects into tree structures and work with the structures as though they are individual objects
 ----
-
+Thouch the archival system would probably benefit from the use of a Composite storage structure, it is not currently implemented.
 
 ### Chain of Responsibility - Behavioral - Enables passing of requests along a chain of handlers, with handlers either handling the request or passing it to the next handler
 ----
@@ -147,11 +147,11 @@ The UserState abstract class manages the ArchivistState and ReaderState concrete
 
 ### Decorator - Structural - Attach new behaviors to objects by placing them in wrapper objects that contain the behaviors
 ----
-
+No behavior extensions are being made using Decorators
 
 ### Command - Behavioral - Turns a request into a standalone object that contains all information about the request
 ----
-
+No Command objects are being used
 
 ### Mediator - Behavioral - Reduces chaotic dependencies between objects (Handlers are an example of this)
 ----
@@ -159,16 +159,16 @@ ArchiveApp connects the archive subsystems together and allows communication bet
 
 ### Memento - Behavioral - Saves and restores state of object without revealing details of implementation
 ----
-
+No Mementos are used, though they could be used to create a backup system for the archive in the future
 
 ### Observer - Behavioral - Defines a subscription mechanism to notify multiple objects of events
 ----
-
+No Observers are currently used
 
 ### Visitor - Behavioral - Used to perform an operation on a group of similar objects and allows trhe definition of new operations for classes without changing said classes
 ----
-
+No Visitors being used
 
 ### Null Object - Behavioral - Encapsulate the absence of an object (that is optionally null) by providing an alternative that offers suitable default do-nothing behavior
 ----
-
+No Null Objects being used

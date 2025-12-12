@@ -8,7 +8,23 @@ from controller_interface.user_state import UserState, ReaderState, ArchivistSta
 from controller_interface.file_selector import FileSelector
 
 class ArchiveApp:
-    """ Controller to connect GUI to file operations """
+    """ 
+    Controller to connect GUI to file operations (Mediator)
+
+    Methods:
+
+    __init__(...) : Constructor that recieves all dependencies via injection
+
+    upload_file(self) : Handles uploads to archive
+
+    view_log(self, entries: int = 20) : Allows the user to view the last N log entries (currently hardcoded to be 20)
+
+    search_files(self, query:str) : Searches the archive folder for files matching a given query
+    
+    switch_to_reader(self) : changes role to ReaderState and updates UI accordingly
+    
+    switch_to_archivist(self) : changes role to ReaderState and updates UI accordingly
+    """
     def __init__(self, root: tk.Tk, selector: FileSelector, storage: FileStorageInterface, search: SearchInterface, records: RecordStorageInterface, role: UserState):
         self.root = root
         self.selector = selector
